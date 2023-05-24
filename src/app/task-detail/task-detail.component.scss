@@ -1,0 +1,79 @@
+@import '../../styles.scss';
+@import '../../styles/color.scss';
+
+.detail-task-container {
+    
+    min-height: calc(100vh - 58px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .body-container {
+        padding: 30px;
+    }
+    .title-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        margin-bottom: 60px;
+    }
+
+    .task-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 10px;
+        border: 1px solid $black-color;
+      
+        .header-container {
+            display: flex;
+            align-items: center;
+            label {
+                font-size: 14px;
+            }
+        }
+        .button-container {
+            .btn {
+                border-radius: 5px;
+                color: $white-color;
+                cursor: pointer;
+                padding: 5px 15px;
+                font-size: 12px;
+                width: 80px;
+            }
+
+            .bulk-btn {
+                padding: 8px 15px;
+                width: 95px;
+            }
+          
+            .remove-btn {
+                background-color : $remove-btn-color;
+                border: 1px solid $remove-btn-color;
+                
+            }
+            .detail-btn {
+                background-color : $detail-btn-color;
+                border: 1px solid $detail-btn-color;
+                margin-right: 10px;
+            }
+
+            .done-btn {
+                background-color : $done-btn-color;
+                border: 1px solid $done-btn-color;
+                margin-right: 10px;
+            }
+        }
+
+        &.no-border {
+            border :none;
+        }
+    }
+
+    .footer-container {
+        border-top: 1px solid $black-color;
+        width: 100%;
+        background-color: $background-footer;
+        
+    }
+    
+}

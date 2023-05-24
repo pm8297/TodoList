@@ -1,1 +1,66 @@
 /* You can add global styles to this file, and also import other style files */
+@import './styles/color.scss';
+
+
+.todo-list-container {
+    font-size: 14px;
+    font-family:'Roboto'
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.mb-20 {
+    margin-bottom : 20px;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+select {
+    width: 100%;
+    padding: 6px 5px;
+}
+
+.text-field {
+    display: flex;
+    width: 100%;
+    input[type='text'] {
+        width: 100%;
+        padding: 7px 10px;
+        border: 1px solid $border-color;
+    }
+    input[type='date'] {
+        width: 100%;
+        padding: 5px 8px;
+       
+    }
+}
+
+.textarea-field {
+    display: flex;
+    width: 100%;
+    textarea {
+        width: 100%;
+        height: 100px;
+        padding: 7px 10px;
+       
+    }
+}
+
+.error-msg {
+    margin-top: 5px;
+    color: $red-color;
+    font-size: 12px;
+}
+
+.error-input {
+    border: 1px solid $red-color !important; 
+}
+

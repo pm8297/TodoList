@@ -1,0 +1,70 @@
+<div class="create-task-container" [class]="isDetail ? 'border' : ''">
+  <div *ngIf="!isDetail" class="title-container"><strong>New Task</strong></div>
+  <form *ngIf="createTaskForm" [formGroup]="createTaskForm" autocomplete="off">
+    <div class="field-container mb-20">
+      <div class="text-field">
+        <input
+          [class]="isSubmitted && f['title'].errors ? 'error-input' : ''"
+          type="text"
+          formControlName="title"
+          placeholder="Add new task..."
+        />
+      </div>
+      <div *ngIf="isSubmitted && f['title'].errors">
+        <p class="error-msg">This field is required.</p>
+      </div>
+    </div>
+
+    <div class="field-container mb-20">
+      <div class="title-field mb-10"><strong>Description</strong></div>
+      <div class="textarea-field">
+        <textarea formControlName="description"></textarea>
+      </div>
+    </div>
+
+    <div class="flex-container mb-20">
+      <div class="field-container w-50">
+        <div class="title-field mb-10"><strong>Due Date</strong></div>
+        <div class="text-field">
+          <input
+            formControlName="dueDate"
+            type="date"
+            id="dueDate"
+            name="dueDate"
+            [min]="dueDateDefault"
+          />
+        </div>
+      </div>
+      <div class="field-container w-50">
+        <div class="title-field mb-10"><strong>Piority</strong></div>
+        <div class="text-field">
+          <select formControlName="piority" name="piority" id="piority">
+            <ng-container *ngFor="let p of piorityList">
+              <option [value]="p.value">
+                {{ p.label }}
+              </option>
+            </ng-container>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="field-container">
+      <button
+        *ngIf="!isDetail"
+        type="button"
+        class="add-btn"
+        (click)="onAddNewTask()"
+      >
+        Add
+      </button>
+      <button
+        *ngIf="isDetail"
+        type="button"
+        class="add-btn"
+        (click)="onUpdateTask()"
+      >
+        Update
+      </button>
+    </div>
+  </form>
+</div>

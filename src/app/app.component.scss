@@ -1,0 +1,34 @@
+@import '../styles/color.scss';
+
+.todo-list-container {
+    display: flex;
+    padding: 20px 50px;
+    height: calc(100vh - 56px);
+    .create-task-container {
+        width: 45%;
+        border: 1px solid $black-color;
+        border-right: none;
+    }
+    .list-task-container {
+        width: 55%;
+        border: 1px solid $black-color;
+        overflow-y: scroll;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .todo-list-container {
+        flex-direction: column;
+        height: 100%;
+        .create-task-container {
+            width: 100%;
+            border: 1px solid $black-color;
+            border-bottom: none;
+        }
+
+        .list-task-container {
+            width: 100%;
+            overflow-y: none;
+         }
+    }
+  }

@@ -1,0 +1,75 @@
+<div class="detail-task-container">
+  <div class="body-container">
+    <div class="title-container"><strong>To Do List</strong></div>
+    <form
+      *ngIf="detailTaskForm"
+      [formGroup]="detailTaskForm"
+      autocomplete="off"
+    >
+      <div class="field-container mb-20">
+        <div class="text-field">
+          <input
+            type="text"
+            formControlName="search"
+            placeholder="Search..."
+            (keyup.enter)="onSearchTask()"
+          />
+        </div>
+      </div>
+      <ng-container *ngFor="let task of filteredTaskList; let i = index">
+        <div class="task-container" [class]="task.isDetail ? '' : 'mb-20'">
+          <div class="header-container">
+            <input
+              type="checkbox"
+              [id]="task.description"
+              [name]="task.description"
+              [checked]="task.isChecked"
+              (change)="onChangeChecked($event, i)"
+            />
+            <label style="margin-left: 5px" [for]="task.description">
+              {{ task.title }}</label
+            ><br />
+          </div>
+          <div class="button-container">
+            <button
+              type="button"
+              class="detail-btn btn"
+              (click)="showDetail(i)"
+            >
+              Detail
+            </button>
+            <button type="button" class="remove-btn btn" (click)="onRemove(i)">
+              Remove
+            </button>
+          </div>
+        </div>
+        <div *ngIf="task.isDetail" class="task-detail mb-20">
+          <app-create-task
+            [taskDetail]="task"
+            [isDetail]="true"
+            [index]="i"
+            (handleUpdateTask)="onUpdateTask($event)"
+          ></app-create-task>
+        </div>
+      </ng-container>
+    </form>
+  </div>
+
+  <div *ngIf="isBulkAction" class="footer-container">
+    <div class="task-container no-border">
+      <div class="header-container">
+        <label style="margin-left: 5px"> Bulk Action:</label><br />
+      </div>
+      <div class="button-container">
+        <button type="button" class="done-btn btn bulk-btn">Done</button>
+        <button
+          type="button"
+          class="remove-btn btn bulk-btn"
+          (click)="onRemoveTasksChecked()"
+        >
+          Remove
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+@import '../../styles.scss';
+@import '../../styles/color.scss';
+
+.create-task-container {
+    padding: 30px;
+    .title-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        margin-bottom: 60px;
+    }
+
+    .flex-container {
+        display: flex;
+        gap: 15px;
+    }
+
+    .add-btn {
+        width: 100%;
+        background-color : $add-btn-color;
+        padding: 5px 5px;
+        border: 1px solid $add-btn-color;
+        border-radius: 5px;
+        color: $white-color;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
+    &.border {
+        border: 1px solid $black-color;
+        border-top: none;
+    }
+}
