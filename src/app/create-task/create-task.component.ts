@@ -10,7 +10,6 @@ import { TaskDetail } from '../models/task.model';
 export class CreateTaskComponent implements OnInit {
   @Input() isDetail = false;
   @Input() taskDetail!: TaskDetail;
-  @Input() index!: number;
   @Output() handleAddNewTask = new EventEmitter();
   @Output() handleUpdateTask = new EventEmitter();
 

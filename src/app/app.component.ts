@@ -14,6 +14,7 @@ export class AppComponent {
   constructor(private taskService: TaskService) {
     this.taskService.getAllTasks().subscribe((value: TaskDetail[]) => {
       this.allTasks = value;
+      this.sortListTasks(this.allTasks);
     });
   }
 
@@ -21,6 +22,7 @@ export class AppComponent {
     newTask.id = this.allTasks.length + 1;
     this.taskService.addNewTask(newTask).subscribe((value: TaskDetail[]) => {
       this.allTasks = value;
+      this.sortListTasks(this.allTasks);
     });
   }
 
@@ -29,14 +31,28 @@ export class AppComponent {
       .removeTaskChecked(tasks)
       .subscribe((value: TaskDetail[]) => {
         this.allTasks = value;
+        this.sortListTasks(this.allTasks);
       });
   }
 
   handleUpdateTask(task: TaskDetail) {
     this.taskService.updateTaskDetail(task).subscribe((value: TaskDetail[]) => {
       this.allTasks = value;
+      this.sortListTasks(this.allTasks);
     });
   }
 
-  sortListTasks(allTasks: TaskDetail[]) {}
+  sortListTasks(allTasks: TaskDetail[]) {
+    this.allTasks = allTasks.sort((a: TaskDetail, b: TaskDetail) => {
+      if (a.dueDate < b.dueDate) {
+        return -1;
+      }
+
+      if (a.dueDate > b.dueDate) {
+        return 1;
+      }
+
+      return 0;
+    });
+  }
 }

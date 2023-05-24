@@ -69,6 +69,7 @@ export class TaskDetailComponent implements OnInit {
   }
 
   onUpdateTask(event: Event) {
+    this.filteredTaskList.map((item) => (item.isDetail = false));
     this.handleUpdateTask.emit(event);
   }
 }
