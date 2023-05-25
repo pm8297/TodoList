@@ -77,3 +77,30 @@
     }
     
 }
+
+@media screen and (max-width: 540px) {
+    .detail-task-container {
+        min-height: calc(100vh - 200px);
+        .body-container {
+            padding: 20px;
+        }
+        .task-container {
+            .button-container{
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                .btn {
+                    font-size: 10px;
+                    width: 60px;
+                    padding: 5px 10px;
+                }
+
+                .bulk-btn {
+                    padding: 8px 12px;
+                    width: 80px;
+                }
+            }
+        }
+    }
+    
+  }
