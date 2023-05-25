@@ -49,10 +49,12 @@ export class TaskDetailComponent implements OnInit {
 
   onRemove(i: number) {
     this.filteredTaskList.splice(i, 1);
+    this.isBulkAction = false;
   }
 
   onRemoveTasksChecked() {
     this.handleRemoveTasksChecked.emit(this.filteredTaskList);
+    this.isBulkAction = false;
   }
 
   onChangeChecked(event: Event, i: number) {
