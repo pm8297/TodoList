@@ -38,12 +38,9 @@ export class TaskDetailComponent implements OnInit {
       this.filteredTaskList = this.allTasks;
       this.filteredTaskList.map((item) => (item.isDetail = false));
     }
-    console.log(searchValue, 'searchValue');
     this.filteredTaskList = this.allTasks.filter((item) =>
       item.title.toLowerCase().includes(searchValue.toLowerCase())
     );
-
-    console.log(this.filteredTaskList, 'this.filteredTaskList');
   }
 
   showDetail(i: number) {
