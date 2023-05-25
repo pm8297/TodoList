@@ -48,8 +48,13 @@ export class TaskDetailComponent implements OnInit {
   }
 
   onRemove(i: number) {
-    this.filteredTaskList.splice(i, 1);
-    this.isBulkAction = false;
+    if (confirm('Do you want to remove this task?') === true) {
+      this.filteredTaskList.splice(i, 1);
+      this.isBulkAction = false;
+      alert('Remove task successfull!');
+    } else {
+      return;
+    }
   }
 
   onRemoveTasksChecked() {

@@ -21,22 +21,29 @@ export class AppComponent {
   handleAddNewTask(newTask: TaskDetail) {
     newTask.id = this.allTasks.length + 1;
     this.taskService.addNewTask(newTask).subscribe((value: TaskDetail[]) => {
+      this.successMessage('Add a new task successfull!');
       this.allTasks = value;
       this.sortListTasks(this.allTasks);
     });
   }
 
   handleRemoveTasksChecked(tasks: TaskDetail[]) {
-    this.taskService
-      .removeTaskChecked(tasks)
-      .subscribe((value: TaskDetail[]) => {
-        this.allTasks = value;
-        this.sortListTasks(this.allTasks);
-      });
+    if (confirm('Do you want to remove task(s)?') === true) {
+      this.taskService
+        .removeTaskChecked(tasks)
+        .subscribe((value: TaskDetail[]) => {
+          this.allTasks = value;
+          this.sortListTasks(this.allTasks);
+          this.successMessage('Remove task(s) successfull!');
+        });
+    } else {
+      this.allTasks.map((item) => (item.isChecked = false));
+    }
   }
 
   handleUpdateTask(task: TaskDetail) {
     this.taskService.updateTaskDetail(task).subscribe((value: TaskDetail[]) => {
+      this.successMessage('Update task successfull!');
       this.allTasks = value;
       this.sortListTasks(this.allTasks);
     });
@@ -54,5 +61,9 @@ export class AppComponent {
 
       return 0;
     });
+  }
+
+  successMessage(msg: string) {
+    alert(msg);
   }
 }
